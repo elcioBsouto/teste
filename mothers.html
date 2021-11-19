@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Our superheroes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header>
+
+  </header>
+  <button>Machine is off</button>
+  <section>
+
+  </section>
+
+  <script>
+    const section = document.querySelector('section');
+
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+    let para3 = document.createElement('p');
+    let para4 = document.createElement('p');
+
+
+    let btn = document.querySelector('button');
+
+    let motherInfo = 'The mother cats are called ';
+    let kittenInfo = '';
+
+
+    let obj =
+      [
+        {
+          "name": "Lindy",
+          "breed": "Cymric",
+          "color": "white",
+          "kittens": [
+            {
+              "name": "Percy",
+              "gender": "m"
+            },
+            {
+              "name": "Thesa",
+              "gender": "f"
+            },
+            {
+              "name": "Annis",
+              "gender": "f"
+            }
+          ]
+        },
+        {
+          "name": "Mina",
+          "breed": "Aphrodite Giant",
+          "color": "ginger",
+          "kittens": [
+            {
+              "name": "Doris",
+              "gender": "f"
+            },
+            {
+              "name": "Pickle",
+              "gender": "f"
+            },
+            {
+              "name": "Max",
+              "gender": "m"
+            }
+          ]
+        },
+        {
+          "name": "Antonia",
+          "breed": "Ocicat",
+          "color": "leopard spotted",
+          "kittens": [
+            {
+              "name": "Bridget",
+              "gender": "f"
+            },
+            {
+              "name": "Randolph",
+              "gender": "m"
+            }
+          ]
+        }
+      ]
+
+  
+    btn.onclick = function displayCatInfo() {
+      let total = 0;
+      let male = 0;
+      let female = 0;
+
+      const mydata = obj;
+      for (i = 0; i < mydata.length; i++) {
+        total++;
+        if (i === mydata.length - 1) {
+          motherInfo += mydata[i].name + ' e.';
+        } else if (i < mydata.length - 1) {
+          motherInfo += mydata[i].name + ',';
+        }
+
+        const kid = mydata[i]['kittens'];
+        for (j = 0; j < kid.length; j++) {
+          if (kid[j].gender === 'm') {           
+            male ++;          
+          } else if (kid[j].gender === 'f') {
+           female ++;            
+          }
+        }
+      }
+      kittenInfo = `${female+male}`;
+      para1.textContent = motherInfo;
+      para2.textContent ='Total de Gatos:   '+ kittenInfo;
+      para3.textContent = 'Total de Machos: '+male;
+      para4.textContent = 'Total de Femeas: '+female;
+    }
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+    section.appendChild(para3);
+    section.appendChild(para4);
+
+
+
+  </script>
+</body>
+
+</html>
